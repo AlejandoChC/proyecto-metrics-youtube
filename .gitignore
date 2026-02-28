@@ -1,0 +1,17 @@
+# --- SEGURIDAD (API KEYS) ---
+# Llaves de YouTube
+.env
+keys.txt
+credentials.json
+client_secret*.json
+
+# --- PYTHON & ANACONDA ---
+__pycache__/
+*.py[cod]
+*$py.class
+.conda/
+.ipynb_checkpoints/
+
+# --- SISTEMA ---
+Thumbs.db
+.DS_Store
