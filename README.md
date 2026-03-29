@@ -1,21 +1,53 @@
-# Automatización de Métricas de YouTube
+# YouTube Channel Intelligence Dashboard
 
-Proyecto de aprendizaje para extraer datos de la API de YouTube, procesarlos con Python y visualizarlos en Power BI.
+Pipeline de datos end to end que extrae métricas de canales de YouTube,
+las transforma, almacena en SQL y visualiza en Power BI.
+Proyecto de aprendizaje para la transición hacia roles técnicos de datos.
 
 ## Objetivo
-Automatizar el flujo de datos desde la API de YouTube hasta un dashboard de Power BI, pasando por una base de datos SQL para el seguimiento histórico.
+Analizar el rendimiento de 5 canales del nicho cultural/político peruano
+para responder preguntas de negocio reales: ¿qué tipo de contenido genera
+más engagement? ¿qué duración funciona mejor? ¿quién domina el nicho y por qué?
+
+## Canales analizados
+- [@Monitorfantasma](https://www.youtube.com/@Monitorfantasma) — Ensayo/Filosofía
+- [@hugoxchugox](https://www.youtube.com/@hugoxchugox) — Historia/Documental
+- [@ElRobotdePlaton](https://www.youtube.com/@ElRobotdePlaton) — Ciencia/Análisis crítico
+- [@DiloNomas](https://www.youtube.com/@DiloNomas) — Crónica/Sociedad
+- [@lahistoriade...1209](https://www.youtube.com/@lahistoriade...1209) — Documentales históricos peruanos
 
 ## Plan de Desarrollo
-- [ ] **Fase 1: Extracción** (Uso de YouTube API y JSON)
-- [ ] **Fase 2: Transformación** (Limpieza de datos con Pandas)
-- [ ] **Fase 3: Almacenamiento** (Carga en SQL)
-- [ ] **Fase 4: Visualización** (Dashboard en Power BI)
+- [x] **Fase 1: Extracción** — YouTube API, paginación, manejo de errores, filtro de shorts
+- [ ] **Fase 2: Transformación** — Limpieza y normalización con Pandas
+- [ ] **Fase 3: Almacenamiento** — Carga en SQL con actualización incremental
+- [ ] **Fase 4: Visualización** — Dashboard en Power BI + automatización con Task Scheduler
 
 ## Tecnologías
 - **Lenguaje:** Python (vía Anaconda)
-- **Editor:** VS Code
-- **Librerías clave:** `requests`, `pandas`, `sqlite3`
-- **Visualización:** Power BI (Modelo en Estrella)
+- **Editor:** Jupyter Notebook → VS Code
+- **Librerías:** `requests`, `isodate`, `pandas`, `sqlite3`
+- **Visualización:** Power BI
+- **API:** YouTube Data API v3
+
+## Estructura del proyecto
+```
+proyecto-metrics-youtube/
+│
+├── 02_proyecto_principal/
+│   ├── extraccion_youtube.ipynb   # Script de extracción Fase 1
+│   ├── info_videos_youtube_raw.csv  # Data cruda extraída
+│   └── keys.txt                   # API keys (excluido via .gitignore)
+│
+└── README.md
+```
+
+## Datos extraídos (Fase 1)
+Por cada canal se extraen los 200 videos más recientes (excluyendo shorts
+y videos menores a 5 minutos) con las siguientes métricas:
+`timestamp`, `channelTitle`, `id`, `title`, `viewCount`, `likeCount`,
+`commentCount`, `duration`
 
 ---
-*Nota: Este proyecto forma parte de mi proceso de aprendizaje de Python y gestión de APIs.*
+*Proyecto de aprendizaje como parte de la transición de Data Analyst
+hacia roles técnicos de datos. Desarrollado con método incremental:
+primero que funcione, luego refactorizar.*
