@@ -33,21 +33,27 @@ más engagement? ¿qué duración funciona mejor? ¿quién domina el nicho y por
 ```
 proyecto-metrics-youtube/
 │
-├── 02_proyecto_principal/
-│   ├── extraccion_youtube.ipynb   # Script de extracción Fase 1
-│   ├── info_videos_youtube_raw.csv  # Data cruda extraída
+│── 02_proyecto_principal/    
+│   ├── scripts/
+│   │   ├── 01_obtener_datos.ipynb   # Script de extracción Fase 1
+│   │   ├── 02_Notebook_De_Pruebas.ipynb   # Borrador de pruebas
+│   ├── info_videos_youtube_raw.csv  # Data cruda extraída por videos
+│   ├── info_videos_youtube_raw.csv  # Data cruda extraída por canal   
 │   └── keys.txt                   # API keys (excluido via .gitignore)
+│── .gitignore
 │
 └── README.md
 ```
 
 ## Datos extraídos (Fase 1)
-Por cada canal se extraen los 200 videos más recientes (excluyendo shorts
+Por cada canal se extraen los 400 videos más recientes (excluyendo shorts
 y videos menores a 5 minutos) con las siguientes métricas:
-`timestamp`, `channelTitle`, `id`, `title`, `viewCount`, `likeCount`,
+`timestamp`, `channelTitle`, `id`, `publishedAt`, `title`, `viewCount`, `likeCount`,
 `commentCount`, `duration`
 
+También se extraen la información de cada canal:
+  `title`, `subscriberCount`, `videoCount`, `viewCount`
 ---
-*Proyecto de aprendizaje como parte de la transición de Data Analyst
+*Proyecto personal de aprendizaje como parte de la transición de Data Analyst
 hacia roles técnicos de datos. Desarrollado con método incremental:
 primero que funcione, luego refactorizar.*
